@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
     {
         xInput = Input.GetAxis("Horizontal");   
         transform.Translate(xInput*moveSpeed*Time.deltaTime,0,0);
+
+        if(transform.position.y<-5f)
+        {
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
