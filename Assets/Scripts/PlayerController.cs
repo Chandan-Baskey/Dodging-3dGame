@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,5 +16,15 @@ public class PlayerController : MonoBehaviour
     {
         xInput = Input.GetAxis("Horizontal");   
         transform.Translate(xInput*moveSpeed*Time.deltaTime,0,0);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Store")
+        {
+            Debug.Log("Player hit an enemy!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        }
     }
 }
